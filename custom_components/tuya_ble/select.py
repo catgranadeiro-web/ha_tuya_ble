@@ -102,6 +102,59 @@ mapping: dict[str, TuyaBLECategorySelectMapping] = {
                     ),
                 ]
             ),
+            "jtmspro": [
+                TuyaBLESelectMapping(
+                    dp_id=34,
+                    description=SelectEntityDescription(
+                        key="unlock_switch",
+                        options=[
+                            "single_unlock",
+                            "double_unlock",
+                        ],
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                ),
+                TuyaBLESelectMapping(
+                    dp_id=68,
+                    description=SelectEntityDescription(
+                        key="special_function",
+                        options=[
+                            "normal",
+                            "passage_mode",
+                            "lockdown",
+                        ],
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                    force_add=False,
+                ),
+                TuyaBLESelectMapping(
+                    dp_id=87,
+                    description=SelectEntityDescription(
+                        key="ibeacon_scan_mode",
+                        options=[
+                            "close",
+                            "slow",
+                            "normal",
+                            "fast",
+                        ],
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                    force_add=False,
+                ),
+                TuyaBLESelectMapping(
+                    dp_id=88,
+                    description=SelectEntityDescription(
+                        key="rssi_sensitivity_level",
+                        options=[
+                            "low",
+                            "medium",
+                            "high",
+                        ],
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                    force_add=False,
+                ),
+            ],
         }
     ),
     "szjqr": TuyaBLECategorySelectMapping(

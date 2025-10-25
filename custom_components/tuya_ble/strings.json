@@ -35,6 +35,9 @@
       }
     },
     "number": {
+      "auto_lock_time": {
+        "name": "Auto lock delay"
+      },
       "brightness": {
         "name": "[%key:component::light::entity_component::_::state_attributes::brightness::name%]"
       },
@@ -75,6 +78,15 @@
           "switch": "[%key:component::switch::entity_component::_::name%]"
         }
       },
+      "ibeacon_scan_mode": {
+        "name": "iBeacon scan mode",
+        "state": {
+          "close": "Off",
+          "slow": "Slow",
+          "normal": "Normal",
+          "fast": "Fast"
+        }
+      },
       "temperature_unit": {
         "name": "Temperature unit"
       },
@@ -87,6 +99,29 @@
       },
       "beep_volume": {
           "name": "Lock Volume"
+      },
+      "rssi_sensitivity_level": {
+        "name": "RSSI sensitivity",
+        "state": {
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High"
+        }
+      },
+      "special_function": {
+        "name": "Special function",
+        "state": {
+          "normal": "Normal",
+          "passage_mode": "Passage mode",
+          "lockdown": "Lockdown"
+        }
+      },
+      "unlock_switch": {
+        "name": "Unlock verification",
+        "state": {
+          "single_unlock": "Single verification",
+          "double_unlock": "Dual verification"
+        }
       }
     },
     "binary_sensor": {
