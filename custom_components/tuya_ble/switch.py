@@ -416,16 +416,18 @@ mapping: dict[str, TuyaBLECategorySwitchMapping] = {
 
 def get_mapping_by_device(device: TuyaBLEDevice) -> list[TuyaBLECategorySwitchMapping]:
     category = mapping.get(device.category)
-    if category is not None and category.products is not None:
+    if category is None:
+        return []
+
+    if category.products is not None:
         product_mapping = category.products.get(device.product_id)
         if product_mapping is not None:
             return product_mapping
-        if category.mapping is not None:
-            return category.mapping
-        else:
-            return []
-    else:
-        return []
+
+    if category.mapping is not None:
+        return category.mapping
+
+    return []
 
 
 class TuyaBLESwitch(TuyaBLEEntity, SwitchEntity):
