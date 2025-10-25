@@ -248,6 +248,25 @@ mapping: dict[str, TuyaBLECategoryNumberMapping] = {
             ],
         },
     ),
+    "ms": TuyaBLECategoryNumberMapping(
+        products={
+            "jtmspro": [
+                TuyaBLENumberMapping(
+                    dp_id=36,
+                    description=NumberEntityDescription(
+                        key="auto_lock_time",
+                        icon="mdi:timer-lock",
+                        native_max_value=60,
+                        native_min_value=0,
+                        native_unit_of_measurement=TIME_SECONDS,
+                        native_step=1,
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                    force_add=False,
+                ),
+            ],
+        },
+    ),
     "szjqr": TuyaBLECategoryNumberMapping(
         products={
             **dict.fromkeys(
