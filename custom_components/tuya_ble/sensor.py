@@ -1,4 +1,4 @@
-"""The Tuya BLE integration."""
+"""Sensor platform for the Tuya BLE integration."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -20,7 +20,7 @@ from homeassistant.const import (
     TEMP_CELSIUS,
     VOLUME_MILLILITERS,
     UnitOfTemperature,
-    UnitOfTime
+    UnitOfTime,
 )
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import EntityCategory
@@ -458,16 +458,18 @@ rssi_mapping = TuyaBLESensorMapping(
 
 def get_mapping_by_device(device: TuyaBLEDevice) -> list[TuyaBLESensorMapping]:
     category = mapping.get(device.category)
-    if category is not None and category.products is not None:
+    if category is None:
+        return []
+
+    if category.products is not None:
         product_mapping = category.products.get(device.product_id)
         if product_mapping is not None:
             return product_mapping
-        if category.mapping is not None:
-            return category.mapping
-        else:
-            return []
-    else:
-        return []
+
+    if category.mapping is not None:
+        return category.mapping
+
+    return []
 
 
 class TuyaBLESensor(TuyaBLEEntity, SensorEntity):

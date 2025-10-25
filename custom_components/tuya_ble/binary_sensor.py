@@ -1,4 +1,4 @@
-"""The Tuya BLE integration."""
+"""Binary sensor platform for the Tuya BLE integration."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -17,9 +17,7 @@ from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
-from .const import (
-    DOMAIN,
-)
+from .const import DOMAIN
 from .devices import TuyaBLEData, TuyaBLEEntity, TuyaBLEProductInfo
 from .tuya_ble import TuyaBLEDataPointType, TuyaBLEDevice
 
@@ -100,16 +98,18 @@ mapping: dict[str, TuyaBLECategoryBinarySensorMapping] = {
 
 def get_mapping_by_device(device: TuyaBLEDevice) -> list[TuyaBLEBinarySensorMapping]:
     category = mapping.get(device.category)
-    if category is not None and category.products is not None:
+    if category is None:
+        return []
+
+    if category.products is not None:
         product_mapping = category.products.get(device.product_id)
         if product_mapping is not None:
             return product_mapping
-        if category.mapping is not None:
-            return category.mapping
-        else:
-            return []
-    else:
-        return []
+
+    if category.mapping is not None:
+        return category.mapping
+
+    return []
 
 
 class TuyaBLEBinarySensor(TuyaBLEEntity, BinarySensorEntity):
