@@ -261,10 +261,7 @@
       "unlock_password": {
           "name": "Password unlocks"
       },
-      "unlock_temporary_password": {
-          "name": "Temporary password unlocks"
-      },
-      "unlock_dynamic_password": {
+      "unlock_dynamic": {
           "name": "Dynamic password unlocks"
       },
       "unlock_card": {
@@ -273,19 +270,19 @@
       "unlock_face": {
           "name": "Face unlocks"
       },
-      "unlock_mechanical_key": {
+      "unlock_key": {
           "name": "Mechanical key unlocks"
       },
       "unlock_ble": {
-          "name": "App unlocks"
+          "name": "Bluetooth unlocks"
       },
-      "unlock_remote": {
-          "name": "Remote unlocks"
+      "unlock_phone_remote": {
+          "name": "Phone remote unlocks"
       },
-      "unlock_remote_failure": {
-          "name": "Remote unlock failures"
+      "unlock_voice_remote": {
+          "name": "Voice remote unlocks"
       },
-      "unlock_ibeacon": {
+      "unlock_ble_ibeacon": {
           "name": "iBeacon unlocks"
       }
     },
