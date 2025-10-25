@@ -300,6 +300,18 @@ devices_database: dict[str, TuyaBLECategoryInfo] = {
             ),
         },
     ),
+    "jtmspro": TuyaBLECategoryInfo(
+        products={
+            **dict.fromkeys(
+                [
+                    "ofwvna43",
+                ],  # device product_ids
+                TuyaBLEProductInfo(
+                    name="JTMS Pro Handle Lock",
+                ),
+            ),
+        },
+    ),
 }
 
 
