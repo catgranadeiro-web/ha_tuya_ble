@@ -4,6 +4,18 @@
 
 This integration supports Tuya devices connected via BLE.
 
+## Recent updates
+
+The latest round of merges focused on expanding smart-lock support and making the
+entity mapping system more resilient:
+
+* Added full coverage for the JTMS Pro handle lock, including energy, access
+  counters, iBeacon configuration, and door-state diagnostics.
+* Improved category level fallbacks so devices without explicit product
+  overrides still expose the right entities.
+* Tidied up select options for the Smart Water Bottle to prevent duplicated
+  reminder mode entries.
+
 _Inspired by code of [@redphx](https://github.com/redphx/poc-tuya-ble-fingerbot)_
 
 ## Installation
@@ -38,6 +50,9 @@ The integration works locally, but connection to Tuya BLE device requires device
 
 * Smart Locks (category_id 'ms')
   + Smart Lock (product_id 'ludzroix', 'isk2p555').
+  + JTMS Pro Handle Lock (category_id 'jtmspro', product_id 'ofwvna43') with
+    counters for each unlock method, binary sensors for door events, and lock
+    configuration entities (verification modes, passage mode, iBeacon, etc.).
 
 * Climate (category_id 'wk')
   + Thermostatic Radiator Valve (product_ids 'drlajpqc', 'nhj2j7su').

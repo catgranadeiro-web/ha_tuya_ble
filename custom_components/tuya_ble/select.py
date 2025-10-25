@@ -230,33 +230,6 @@ mapping: dict[str, TuyaBLECategorySelectMapping] = {
             ],
         },
     ),
-    "znhsb": TuyaBLECategorySelectMapping(
-        products={
-            "cdlandip":  # Smart water bottle
-            [
-                TuyaBLESelectMapping(
-                    dp_id=106,
-                    description=TemperatureUnitDescription(
-                        options=[
-                            UnitOfTemperature.CELSIUS,
-                            UnitOfTemperature.FAHRENHEIT,
-                        ],
-                    )
-                ),
-                TuyaBLESelectMapping(
-                    dp_id=107,
-                    description=SelectEntityDescription(
-                        key="reminder_mode",
-                        options=[
-                            "interval_reminder",
-                            "alarm_reminder",
-                        ],
-                        entity_category=EntityCategory.CONFIG,
-                    ),
-                ),
-            ],
-        },
-    ),
 }
 
 
@@ -264,16 +237,18 @@ def get_mapping_by_device(
     device: TuyaBLEDevice
 ) -> list[TuyaBLECategorySelectMapping]:
     category = mapping.get(device.category)
-    if category is not None and category.products is not None:
+    if category is None:
+        return []
+
+    if category.products is not None:
         product_mapping = category.products.get(device.product_id)
         if product_mapping is not None:
             return product_mapping
-        if category.mapping is not None:
-            return category.mapping
-        else:
-            return []
-    else:
-        return []
+
+    if category.mapping is not None:
+        return category.mapping
+
+    return []
 
 
 class TuyaBLESelect(TuyaBLEEntity, SelectEntity):
