@@ -200,7 +200,7 @@ mapping: dict[str, TuyaBLECategorySensorMapping] = {
             TuyaBLESensorMapping(
                 dp_id=14,
                 description=SensorEntityDescription(
-                    key="unlock_temporary_password",
+                    key="unlock_dynamic",
                     state_class=SensorStateClass.TOTAL_INCREASING,
                 ),
                 force_add=False,
@@ -208,7 +208,7 @@ mapping: dict[str, TuyaBLECategorySensorMapping] = {
             TuyaBLESensorMapping(
                 dp_id=15,
                 description=SensorEntityDescription(
-                    key="unlock_dynamic_password",
+                    key="unlock_card",
                     state_class=SensorStateClass.TOTAL_INCREASING,
                 ),
                 force_add=False,
@@ -216,7 +216,7 @@ mapping: dict[str, TuyaBLECategorySensorMapping] = {
             TuyaBLESensorMapping(
                 dp_id=16,
                 description=SensorEntityDescription(
-                    key="unlock_card",
+                    key="unlock_key",
                     state_class=SensorStateClass.TOTAL_INCREASING,
                 ),
                 force_add=False,
@@ -225,14 +225,6 @@ mapping: dict[str, TuyaBLECategorySensorMapping] = {
                 dp_id=17,
                 description=SensorEntityDescription(
                     key="unlock_face",
-                    state_class=SensorStateClass.TOTAL_INCREASING,
-                ),
-                force_add=False,
-            ),
-            TuyaBLESensorMapping(
-                dp_id=18,
-                description=SensorEntityDescription(
-                    key="unlock_mechanical_key",
                     state_class=SensorStateClass.TOTAL_INCREASING,
                 ),
                 force_add=False,
@@ -274,7 +266,7 @@ mapping: dict[str, TuyaBLECategorySensorMapping] = {
             TuyaBLESensorMapping(
                 dp_id=62,
                 description=SensorEntityDescription(
-                    key="unlock_remote",
+                    key="unlock_phone_remote",
                     state_class=SensorStateClass.TOTAL_INCREASING,
                 ),
                 force_add=False,
@@ -282,7 +274,7 @@ mapping: dict[str, TuyaBLECategorySensorMapping] = {
             TuyaBLESensorMapping(
                 dp_id=63,
                 description=SensorEntityDescription(
-                    key="unlock_remote_failure",
+                    key="unlock_voice_remote",
                     state_class=SensorStateClass.TOTAL_INCREASING,
                 ),
                 force_add=False,
@@ -290,7 +282,7 @@ mapping: dict[str, TuyaBLECategorySensorMapping] = {
             TuyaBLESensorMapping(
                 dp_id=86,
                 description=SensorEntityDescription(
-                    key="unlock_ibeacon",
+                    key="unlock_ble_ibeacon",
                     state_class=SensorStateClass.TOTAL_INCREASING,
                 ),
                 force_add=False,
