@@ -175,6 +175,89 @@ mapping: dict[str, TuyaBLECategorySwitchMapping] = {
             ),
         }
     ),
+    "jtmspro": TuyaBLECategorySwitchMapping(
+        mapping=[
+            TuyaBLESwitchMapping(
+                dp_id=26,
+                description=SwitchEntityDescription(
+                    key="verify_lock_switch",
+                    icon="mdi:lock-check",
+                    entity_category=EntityCategory.CONFIG,
+                ),
+                force_add=False,
+            ),
+            TuyaBLESwitchMapping(
+                dp_id=28,
+                description=SwitchEntityDescription(
+                    key="do_not_disturb",
+                    icon="mdi:bell-off",
+                    entity_category=EntityCategory.CONFIG,
+                ),
+                force_add=False,
+            ),
+            TuyaBLESwitchMapping(
+                dp_id=32,
+                description=SwitchEntityDescription(
+                    key="reverse_lock",
+                    icon="mdi:lock-reset",
+                    entity_category=EntityCategory.CONFIG,
+                ),
+                force_add=False,
+            ),
+            TuyaBLESwitchMapping(
+                dp_id=33,
+                description=SwitchEntityDescription(
+                    key="automatic_lock",
+                    icon="mdi:lock-clock",
+                    entity_category=EntityCategory.CONFIG,
+                ),
+                force_add=False,
+            ),
+            TuyaBLESwitchMapping(
+                dp_id=44,
+                description=SwitchEntityDescription(
+                    key="rtc_lock",
+                    icon="mdi:lock-clock-outline",
+                    entity_category=EntityCategory.CONFIG,
+                ),
+                force_add=False,
+            ),
+            TuyaBLESwitchMapping(
+                dp_id=46,
+                description=SwitchEntityDescription(
+                    key="manual_lock",
+                    icon="mdi:lock-outline",
+                    entity_category=EntityCategory.CONFIG,
+                ),
+                force_add=False,
+            ),
+            TuyaBLESwitchMapping(
+                dp_id=47,
+                description=SwitchEntityDescription(
+                    key="lock_motor_state",
+                ),
+                force_add=False,
+            ),
+            TuyaBLESwitchMapping(
+                dp_id=78,
+                description=SwitchEntityDescription(
+                    key="special_control",
+                    icon="mdi:tune",
+                    entity_category=EntityCategory.CONFIG,
+                ),
+                force_add=False,
+            ),
+            TuyaBLESwitchMapping(
+                dp_id=90,
+                description=SwitchEntityDescription(
+                    key="ibeacon_switch",
+                    icon="mdi:radar",
+                    entity_category=EntityCategory.CONFIG,
+                ),
+                force_add=False,
+            ),
+        ],
+    ),
     "szjqr": TuyaBLECategorySwitchMapping(
         products={
             **dict.fromkeys(
@@ -333,16 +416,18 @@ mapping: dict[str, TuyaBLECategorySwitchMapping] = {
 
 def get_mapping_by_device(device: TuyaBLEDevice) -> list[TuyaBLECategorySwitchMapping]:
     category = mapping.get(device.category)
-    if category is not None and category.products is not None:
+    if category is None:
+        return []
+
+    if category.products is not None:
         product_mapping = category.products.get(device.product_id)
         if product_mapping is not None:
             return product_mapping
-        if category.mapping is not None:
-            return category.mapping
-        else:
-            return []
-    else:
-        return []
+
+    if category.mapping is not None:
+        return category.mapping
+
+    return []
 
 
 class TuyaBLESwitch(TuyaBLEEntity, SwitchEntity):

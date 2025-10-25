@@ -296,6 +296,9 @@
             "antifreeze": {
                 "name": "Antifreeze"
             },
+            "automatic_lock": {
+                "name": "Automatic lock"
+            },
             "carbon_dioxide_alarm_switch": {
                 "name": "Alarm enabled"
             },
@@ -311,8 +314,17 @@
             "low_battery_alarm": {
                 "name": "Low battery alarm"
             },
+            "do_not_disturb": {
+                "name": "Do not disturb"
+            },
+            "ibeacon_switch": {
+                "name": "iBeacon"
+            },
             "manual_control": {
                 "name": "Manual control"
+            },
+            "manual_lock": {
+                "name": "Manual lock"
             },
             "program": {
                 "name": "Program"
@@ -329,6 +341,12 @@
             "reverse_positions": {
                 "name": "Reverse positions"
             },
+            "reverse_lock": {
+                "name": "Reverse lock"
+            },
+            "rtc_lock": {
+                "name": "RTC lock"
+            },
             "switch": {
                 "name": "Switch"
             },
@@ -340,6 +358,12 @@
             },
             "window_check": {
                 "name": "Window Check"
+            },
+            "special_control": {
+                "name": "Special control"
+            },
+            "verify_lock_switch": {
+                "name": "Verification switch"
             }
         },
         "text": {
