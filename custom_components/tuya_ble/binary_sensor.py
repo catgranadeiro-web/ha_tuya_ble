@@ -67,6 +67,34 @@ mapping: dict[str, TuyaBLECategoryBinarySensorMapping] = {
             ],
         },
     ),
+    "jtmspro": TuyaBLECategoryBinarySensorMapping(
+        mapping=[
+            TuyaBLEBinarySensorMapping(
+                dp_id=18,
+                description=BinarySensorEntityDescription(
+                    key="open_inside",
+                    device_class=BinarySensorDeviceClass.OPENING,
+                ),
+                force_add=False,
+            ),
+            TuyaBLEBinarySensorMapping(
+                dp_id=22,
+                description=BinarySensorEntityDescription(
+                    key="hijack",
+                    device_class=BinarySensorDeviceClass.SAFETY,
+                ),
+                force_add=False,
+            ),
+            TuyaBLEBinarySensorMapping(
+                dp_id=24,
+                description=BinarySensorEntityDescription(
+                    key="doorbell",
+                    device_class=BinarySensorDeviceClass.OCCUPANCY,
+                ),
+                force_add=False,
+            ),
+        ]
+    ),
 }
 
 

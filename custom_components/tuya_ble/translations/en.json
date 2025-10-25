@@ -32,6 +32,15 @@
         "binary_sensor": {
             "low_battery": {
                 "name": "Battery"
+            },
+            "open_inside": {
+                "name": "Door opened from inside"
+            },
+            "hijack": {
+                "name": "Hijack alert"
+            },
+            "doorbell": {
+                "name": "Doorbell"
             }
         },
         "button": {
@@ -96,7 +105,25 @@
         },
         "sensor": {
             "alarm_lock": {
-                "name": "Alarm"
+                "name": "Alarm",
+                "state": {
+                    "wrong_finger": "Wrong Fingerprint",
+                    "wrong_password": "Wrong Password",
+                    "wrong_face": "Wrong Face",
+                    "wrong_card": "Wrong Card",
+                    "wrong_key": "Wrong Key",
+                    "wrong_ble": "Wrong App Unlock",
+                    "unlock_timeout": "Unlock Timeout",
+                    "force_open": "Force Open",
+                    "force_lock": "Force Lock",
+                    "tamper": "Tamper",
+                    "system_lock": "System Lock",
+                    "system_error": "System Error",
+                    "door_open_timeout": "Door Open Timeout",
+                    "lock_frozen": "Lock Frozen",
+                    "low_battery": "Low Battery",
+                    "offline": "Offline"
+                }
             },
             "battery": {
                 "name": "Battery"
@@ -133,8 +160,53 @@
             "low_battery": {
                 "name": "Low Battery"
             },
+            "unlock_fingerprint": {
+                "name": "Fingerprint unlocks"
+            },
+            "unlock_password": {
+                "name": "Password unlocks"
+            },
+            "unlock_temporary_password": {
+                "name": "Temporary password unlocks"
+            },
+            "unlock_dynamic_password": {
+                "name": "Dynamic password unlocks"
+            },
+            "unlock_card": {
+                "name": "Card unlocks"
+            },
+            "unlock_face": {
+                "name": "Face unlocks"
+            },
+            "unlock_mechanical_key": {
+                "name": "Mechanical key unlocks"
+            },
+            "unlock_ble": {
+                "name": "App unlocks"
+            },
+            "unlock_remote": {
+                "name": "Remote unlocks"
+            },
+            "unlock_remote_failure": {
+                "name": "Remote unlock failures"
+            },
+            "unlock_ibeacon": {
+                "name": "iBeacon unlocks"
+            },
             "moisture": {
                 "name": "Moisture"
+            },
+            "wrong_face": {
+                "name": "Wrong Face"
+            },
+            "wrong_card": {
+                "name": "Wrong Card"
+            },
+            "wrong_key": {
+                "name": "Wrong Key"
+            },
+            "wrong_ble": {
+                "name": "Wrong App Unlock"
             },
             "residual_electricity": {
                 "name": "Battery"
@@ -156,6 +228,33 @@
             },
             "wrong_password": {
                 "name": "Wrong Password"
+            },
+            "unlock_timeout": {
+                "name": "Unlock Timeout"
+            },
+            "force_open": {
+                "name": "Force Open"
+            },
+            "force_lock": {
+                "name": "Force Lock"
+            },
+            "tamper": {
+                "name": "Tamper"
+            },
+            "system_lock": {
+                "name": "System Lock"
+            },
+            "system_error": {
+                "name": "System Error"
+            },
+            "door_open_timeout": {
+                "name": "Door Open Timeout"
+            },
+            "lock_frozen": {
+                "name": "Lock Frozen"
+            },
+            "offline": {
+                "name": "Offline"
             }
         },
         "switch": {
