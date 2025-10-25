@@ -1,4 +1,4 @@
-"""The Tuya BLE integration."""
+"""Select platform for the Tuya BLE integration."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -205,8 +205,7 @@ mapping: dict[str, TuyaBLECategorySelectMapping] = {
     ),
     "znhsb": TuyaBLECategorySelectMapping(
         products={
-            "cdlandip":  # Smart water bottle
-            [
+            "cdlandip": [  # Smart water bottle
                 TuyaBLESelectMapping(
                     dp_id=106,
                     description=TemperatureUnitDescription(
@@ -214,7 +213,7 @@ mapping: dict[str, TuyaBLECategorySelectMapping] = {
                             UnitOfTemperature.CELSIUS,
                             UnitOfTemperature.FAHRENHEIT,
                         ],
-                    )
+                    ),
                 ),
                 TuyaBLESelectMapping(
                     dp_id=107,
@@ -230,50 +229,23 @@ mapping: dict[str, TuyaBLECategorySelectMapping] = {
             ],
         },
     ),
-    "znhsb": TuyaBLECategorySelectMapping(
-        products={
-            "cdlandip":  # Smart water bottle
-            [
-                TuyaBLESelectMapping(
-                    dp_id=106,
-                    description=TemperatureUnitDescription(
-                        options=[
-                            UnitOfTemperature.CELSIUS,
-                            UnitOfTemperature.FAHRENHEIT,
-                        ],
-                    )
-                ),
-                TuyaBLESelectMapping(
-                    dp_id=107,
-                    description=SelectEntityDescription(
-                        key="reminder_mode",
-                        options=[
-                            "interval_reminder",
-                            "alarm_reminder",
-                        ],
-                        entity_category=EntityCategory.CONFIG,
-                    ),
-                ),
-            ],
-        },
-    ),
 }
 
 
-def get_mapping_by_device(
-    device: TuyaBLEDevice
-) -> list[TuyaBLECategorySelectMapping]:
+def get_mapping_by_device(device: TuyaBLEDevice) -> list[TuyaBLESelectMapping]:
     category = mapping.get(device.category)
-    if category is not None and category.products is not None:
+    if category is None:
+        return []
+
+    if category.products is not None:
         product_mapping = category.products.get(device.product_id)
         if product_mapping is not None:
             return product_mapping
-        if category.mapping is not None:
-            return category.mapping
-        else:
-            return []
-    else:
-        return []
+
+    if category.mapping is not None:
+        return category.mapping
+
+    return []
 
 
 class TuyaBLESelect(TuyaBLEEntity, SelectEntity):
@@ -301,14 +273,12 @@ class TuyaBLESelect(TuyaBLEEntity, SelectEntity):
     def current_option(self) -> str | None:
         """Return the selected entity option to represent the entity state."""
         # Raw value
-        value: str | None = None
         datapoint = self._device.datapoints[self._mapping.dp_id]
         if datapoint:
             value = datapoint.value
-            if value >= 0 and value < len(self._attr_options):
+            if isinstance(value, int) and 0 <= value < len(self._attr_options):
                 return self._attr_options[value]
-            else:
-                return value
+            return value
         return None
 
     def select_option(self, value: str) -> None:
